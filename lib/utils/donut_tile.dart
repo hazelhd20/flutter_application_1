@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 class DonutTile extends StatelessWidget {
   final String donutFlavor;
   final String donutPrice;
-  final dynamic donutColor;
+  final donutColor;
   final String imageName;
-  //Valor fijo del borde circular
-  final double borderRadius = 24;
-  const DonutTile(
-      {super.key,
-      required this.donutFlavor,
-      required this.donutPrice,
-      this.donutColor,
-      required this.imageName});
+
+  final double borderRadius = 12;
+
+  const DonutTile({
+    super.key,
+    required this.donutFlavor,
+    required this.donutPrice,
+    required this.donutColor,
+    required this.imageName,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,40 +25,76 @@ class DonutTile extends StatelessWidget {
           color: donutColor[50],
           borderRadius: BorderRadius.circular(borderRadius),
         ),
-        child: Column(children: [
-          Row(
-            //Alinea el texto a la derecha
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: donutColor[100],
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(borderRadius),
-                    topRight: Radius.circular(borderRadius),
+        child: Column(
+          children: [
+            // price
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: donutColor[100],
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(borderRadius),
+                      topRight: Radius.circular(borderRadius),
+                    ),
                   ),
-                ),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-                child: Text(
-                  '\$$donutPrice',
-                  style: TextStyle(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    '\$$donutPrice',
+                    style: TextStyle(
+                      color: donutColor[800],
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: donutColor[800]),
+                    ),
+                  ),
                 ),
+              ],
+            ),
+
+            // donut picture
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 42.0, vertical: 16),
+              child: Image.asset(imageName),
+            ),
+
+            // donut flavor
+            Text(
+              donutFlavor,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
               ),
-            ],
-          ),
-          //Imagen del producto
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-              child: Image.asset(imageName))
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'Dunkins',
+              style: TextStyle(color: Colors.grey[600]),
+            ),
 
-          //Tarea: Texto del sabor del producto con el nombre de la tienda
+            // love icon + add button
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // love icon
+                  Icon(
+                    Icons.favorite,
+                    color: Colors.pink[400],
+                  ),
 
-          //Tarea: Iconos de "me encanta" y "agregar"
-        ]),
+                  // plus button
+                  Icon(
+                    Icons.add,
+                    color: Colors.grey[800],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

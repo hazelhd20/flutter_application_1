@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/tab/burger_tab.dart';
+import 'package:flutter_application_1/tab/donut_tab.dart';
+import 'package:flutter_application_1/tab/pancake_tab.dart';
+import 'package:flutter_application_1/tab/pizza_tab.dart';
+import 'package:flutter_application_1/tab/smoothie_tab.dart';
 import 'package:flutter_application_1/utils/my_tab.dart';
-import '../tabs/donut_tab.dart';
-import '../tabs/burger_tab.dart';
-import '../tabs/pancake_tab.dart';
-import '../tabs/pizza_tab.dart';
-import '../tabs/smoothie_tab.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,17 +14,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Widget> myTabs = [
-    // Donut tab
-    const MyTab(iconPath: 'lib/icons/donut.png'),
-    // Burger tab
-    const MyTab(iconPath: 'lib/icons/burger.png'),
-    // Smoothie tab
-    const MyTab(iconPath: 'lib/icons/smoothie.png'),
-    // Pancake tab
-    const MyTab(iconPath: 'lib/icons/pancakes.png'),
-    // Pizza tab
-    const MyTab(iconPath: 'lib/icons/pizza.png'),
+  // my tabs
+  List<Widget> myTabs = const [
+    // donut tab
+    MyTab(
+      iconPath: 'lib/icons/donut.png',
+    ),
+
+    // burger tab
+    MyTab(
+      iconPath: 'lib/icons/burger.png',
+    ),
+
+    // smoothie tab
+    MyTab(
+      iconPath: 'lib/icons/smoothie.png',
+    ),
+
+    // pancake tab
+    MyTab(
+      iconPath: 'lib/icons/pancakes.png',
+    ),
+
+    // pizza tab
+    MyTab(
+      iconPath: 'lib/icons/pizza.png',
+    ),
   ];
 
   @override
@@ -34,56 +49,81 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          leading: Icon(
-            Icons.menu,
-            color: Colors.grey[800],
+          elevation: 0,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: Colors.grey[800],
+                size: 36,
+              ),
+              onPressed: () {
+                // open drawer
+              },
+            ),
           ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 16.0),
               child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.person, color: Colors.grey[800]),
+                icon: Icon(
+                  Icons.person,
+                  color: Colors.grey[800],
+                  size: 36,
+                ),
+                onPressed: () {
+                  // account button tapped
+                },
               ),
             )
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
+        body: Column(
+          children: [
+            // i want to eat
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 36.0, vertical: 18),
+              child: Row(
                 children: [
                   Text(
-                    "I want to",
-                    style: TextStyle(fontSize: 32.0),
+                    'I want to',
+                    style: TextStyle(fontSize: 24, color: Colors.grey[600]),
                   ),
-                  SizedBox(width: 10),
                   Text(
-                    "Eat",
-                    style: TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
-                    ),
+                    ' EAT',
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-              TabBar(tabs: myTabs),
-              // Tab bar view
-              Expanded(
-                child: TabBarView(
-                  children: [
-                    DonutTab(),
-                    BurgerTab(),
-                    SmoothieTab(),
-                    PanCakeTab(),
-                    PizzaTab(),
-                  ],
-                ),
+            ),
+
+            // tab bar
+            TabBar(tabs: myTabs),
+
+            // tab bar view
+            Expanded(
+              child: TabBarView(
+                children: [
+                  // donut page
+                  DonutTab(),
+
+                  // burger page
+                  BurgerTab(),
+
+                  // smoothie page
+                  SmoothieTab(),
+
+                  // pancake page
+                  PancakeTab(),
+
+                  // pizza page
+                  PizzaTab(),
+                ],
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
