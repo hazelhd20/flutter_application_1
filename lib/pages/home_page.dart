@@ -89,16 +89,16 @@ class _HomePageState extends State<HomePage> {
             // i want to eat
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 36.0, vertical: 18),
+                  const EdgeInsets.symmetric(horizontal: 28.0, vertical: 14),
               child: Row(
                 children: [
                   Text(
-                    'I want to',
-                    style: TextStyle(fontSize: 24, color: Colors.grey[600]),
+                    'I want to ',
+                    style: TextStyle(fontSize: 24, color: Colors.grey[800]),
                   ),
                   Text(
-                    ' EAT',
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
+                    'Eat',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
                   ),
                 ],
               ),
