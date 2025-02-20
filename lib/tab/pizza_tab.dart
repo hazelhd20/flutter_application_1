@@ -8,7 +8,7 @@ class PizzaTab extends StatelessWidget {
     ["BBQ Chicken", 140.0, Colors.brown, "lib/images/pepperoni_pizza.png"],
     ["Veggie", 110.0, Colors.orange, "lib/images/pepperoni_pizza.png"],
     ["Hawaiian", 130.0, Colors.yellow, "lib/images/pepperoni_pizza.png"],
-    ["Meat Lovers", 150.0, Colors.redAccent, "lib/images/pepperoni_pizza.png"],
+    ["Meat Lovers", 150.0, Colors.red, "lib/images/pepperoni_pizza.png"],
     ["Cheese", 90.0, Colors.blue, "lib/images/pepperoni_pizza.png"],
     ["Supreme", 135.0, Colors.purple, "lib/images/pepperoni_pizza.png"],
   ];
@@ -26,6 +26,7 @@ class PizzaTab extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         return PizzaTile(
+          key: ValueKey(pizzasOnSale[index][0]), // Mejor rendimiento
           pizzaFlavor: pizzasOnSale[index][0],
           pizzaPrice: pizzasOnSale[index][1].toString(),
           pizzaColor: pizzasOnSale[index][2],
