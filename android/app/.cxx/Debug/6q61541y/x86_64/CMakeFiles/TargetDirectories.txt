@@ -1,0 +1,2 @@
+C:/Users/hazel/Documents/Programacion de aplicaciones moviles/Proyectos/donut_app_8sc/flutter_application_1/android/app/.cxx/Debug/6q61541y/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/hazel/Documents/Programacion de aplicaciones moviles/Proyectos/donut_app_8sc/flutter_application_1/android/app/.cxx/Debug/6q61541y/x86_64/CMakeFiles/rebuild_cache.dir

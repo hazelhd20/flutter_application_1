@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 class DonutTile extends StatelessWidget {
   final String donutFlavor;
   final String donutPrice;
-  final donutColor;
+  final MaterialColor donutColor;
   final String imageName;
-
-  final double borderRadius = 12;
+  final double borderRadius = 14;
 
   const DonutTile({
     super.key,
@@ -22,7 +21,7 @@ class DonutTile extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: Container(
         decoration: BoxDecoration(
-          color: donutColor[50],
+          color: donutColor[50] ?? Colors.grey[50], // Asegura un color seguro
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: Column(
@@ -33,19 +32,19 @@ class DonutTile extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: donutColor[100],
+                    color: donutColor[100] ?? Colors.grey[100],
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(borderRadius),
                       topRight: Radius.circular(borderRadius),
                     ),
                   ),
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   child: Text(
                     '\$$donutPrice',
                     style: TextStyle(
-                      color: donutColor[800],
+                      color: donutColor[800] ?? Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -54,18 +53,16 @@ class DonutTile extends StatelessWidget {
 
             // donut picture
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 42.0, vertical: 16),
-              child: Image.asset(imageName),
+              padding: const EdgeInsets.symmetric(horizontal: 42.0, vertical: 4),
+              child: Image.asset(imageName, errorBuilder: (context, error, stackTrace) {
+                return const Icon(Icons.broken_image, size: 50, color: Colors.red);
+              }),
             ),
 
             // donut flavor
             Text(
               donutFlavor,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             const SizedBox(height: 4),
             Text(
@@ -80,19 +77,23 @@ class DonutTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // love icon
-                  Icon(
-                    Icons.favorite,
-                    color: Colors.pink[400],
+                  IconButton(
+                    icon: Icon(Icons.favorite, color: Colors.pink[400] ?? Colors.pink),
+                    onPressed: () {
+                      debugPrint('Favorito presionado');
+                    },
                   ),
 
                   // plus button
-                  Icon(
-                    Icons.add,
-                    color: Colors.grey[800],
+                  IconButton(
+                    icon: Icon(Icons.add, color: Colors.grey[800] ?? Colors.grey),
+                    onPressed: () {
+                      debugPrint('Añadir presionado');
+                    },
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

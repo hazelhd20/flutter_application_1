@@ -19,26 +19,31 @@ class _HomePageState extends State<HomePage> {
     // donut tab
     MyTab(
       iconPath: 'lib/icons/donut.png',
+      tabName: 'Donuts',
     ),
 
     // burger tab
     MyTab(
       iconPath: 'lib/icons/burger.png',
+      tabName: 'Burger',
     ),
 
     // smoothie tab
     MyTab(
       iconPath: 'lib/icons/smoothie.png',
+      tabName: 'Smoothie',
     ),
 
     // pancake tab
     MyTab(
       iconPath: 'lib/icons/pancakes.png',
+      tabName: 'PanCakes',
     ),
 
     // pizza tab
     MyTab(
       iconPath: 'lib/icons/pizza.png',
+      tabName: 'Pizza',
     ),
   ];
 
@@ -56,7 +61,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 Icons.menu,
                 color: Colors.grey[800],
-                size: 36,
+                size: 30,
               ),
               onPressed: () {
                 // open drawer
@@ -70,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                 icon: Icon(
                   Icons.person,
                   color: Colors.grey[800],
-                  size: 36,
+                  size: 30,
                 ),
                 onPressed: () {
                   // account button tapped
@@ -93,14 +98,18 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(
                     ' EAT',
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
                   ),
                 ],
               ),
             ),
 
             // tab bar
-            TabBar(tabs: myTabs),
+            TabBar(
+              tabs: myTabs,
+              labelColor: Colors.pink,
+              unselectedLabelColor: Colors.grey,
+            ),
 
             // tab bar view
             Expanded(
@@ -122,7 +131,47 @@ class _HomePageState extends State<HomePage> {
                   PizzaTab(),
                 ],
               ),
-            )
+            ),
+            //Carrito
+            Container(
+                color: Colors.white,
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 28),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "2 Items | \$45",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Delivery Charges Included",
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.pink),
+                          child: const Text(
+                            "View Cart",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
+                    ]))
           ],
         ),
       ),
